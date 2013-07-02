@@ -384,7 +384,7 @@ void Com_ParseCommandLine( char *commandLine ) {
 		// if commandLine came from a file, we might have real line seperators
 		if ( *commandLine == '+' || *commandLine == '\n' ) {
 			if ( com_numConsoleLines == MAX_CONSOLE_LINES ) {
-				return;
+                break;
 			}
 			com_consoleLines[com_numConsoleLines] = commandLine + 1;
 			com_numConsoleLines++;
