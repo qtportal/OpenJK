@@ -142,8 +142,8 @@ wavinfo_t GetWavinfo (const char *name, byte *wav, int wavlength)
 	iff_end = wav + wavlength;
 
 // find "RIFF" chunk
-	FindChunk("RIFF");
-	if (!(data_p && !strncmp((char *)data_p+8, "WAVE", 4)))
+    FindChunk((char*)"RIFF");
+    if (!(data_p && !strncmp((char *)data_p+8, (char*)"WAVE", 4)))
 	{
 		Com_Printf("Missing RIFF/WAVE chunks\n");
 		return info;
@@ -153,7 +153,7 @@ wavinfo_t GetWavinfo (const char *name, byte *wav, int wavlength)
 	iff_data = data_p + 12;
 // DumpChunks ();
 
-	FindChunk("fmt ");
+    FindChunk((char*)"fmt ");
 	if (!data_p)
 	{
 		Com_Printf("Missing fmt chunk\n");
@@ -174,7 +174,7 @@ wavinfo_t GetWavinfo (const char *name, byte *wav, int wavlength)
 
 
 // find data chunk
-	FindChunk("data");
+    FindChunk((char*)"data");
 	if (!data_p)
 	{
 		Com_Printf("Missing data chunk\n");
