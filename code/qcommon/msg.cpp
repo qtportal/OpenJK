@@ -941,7 +941,7 @@ plyer_state_t communication
 // using the stringizing operator to save typing...
 #define	PSF(x) #x,(int)&((playerState_t*)0)->x
 
-static const netField_t	playerStateFields[] = 
+static const netField_t	playerStateFields[] =
 {
 { PSF(commandTime), 32 },
 { PSF(pm_type), 8 },

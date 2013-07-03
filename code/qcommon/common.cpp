@@ -299,7 +299,8 @@ void QDECL Com_Error( int code, const char *fmt, ... ) {
 
 	SG_Shutdown();				// close any file pointers
 	if ( code == ERR_DISCONNECT ) {
-		SV_Shutdown("Disconnect");
+        char strDisconnect[] = "Disconnect";
+        SV_Shutdown(strDisconnect);
 		CL_Disconnect();
 		CL_FlushMemory();
 		CL_StartHunkUsers();
@@ -336,9 +337,10 @@ do the apropriate things.
 =============
 */
 void Com_Quit_f( void ) {
-	// don't try to shutdown if we are in a recursive error
+    // don't try to shutdown if we are in a recursive error
 	if ( !com_errorEntered ) {
-		SV_Shutdown ("Server quit\n");
+        char strServerQuit[] = "Server quit\n" ;
+        SV_Shutdown (strServerQuit);
 		CL_Shutdown ();
 		Com_Shutdown ();
 	}
