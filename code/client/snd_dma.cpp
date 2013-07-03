@@ -4241,7 +4241,7 @@ static qboolean S_StartBackgroundTrack_Actual( MusicInfo_t *pMusicInfo, qboolean
 
 		FS_Read(dump, 12, pMusicInfo->s_backgroundFile);
 
-		if ( !S_FindWavChunk( pMusicInfo->s_backgroundFile, "fmt " ) ) {
+        if ( !S_FindWavChunk( pMusicInfo->s_backgroundFile,(char *)"fmt ") ) {
 			Com_Printf( S_COLOR_YELLOW "WARNING: No fmt chunk in %s\n", name );
 			FS_FCloseFile( pMusicInfo->s_backgroundFile );
 			pMusicInfo->s_backgroundFile = 0;
@@ -4267,7 +4267,7 @@ static qboolean S_StartBackgroundTrack_Actual( MusicInfo_t *pMusicInfo, qboolean
 			Com_Printf(S_COLOR_YELLOW "WARNING: music file %s is not 22k stereo\n", name );
 		}
 
-		if ( ( len = S_FindWavChunk( pMusicInfo->s_backgroundFile, "data" ) ) == 0 ) {
+        if ( ( len = S_FindWavChunk( pMusicInfo->s_backgroundFile, (char *)"data" ) ) == 0 ) {
 			FS_FCloseFile( pMusicInfo->s_backgroundFile );
 			pMusicInfo->s_backgroundFile = 0;
 			Com_Printf(S_COLOR_YELLOW "WARNING: No data chunk in %s\n", name);
