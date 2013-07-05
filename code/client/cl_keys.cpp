@@ -1172,7 +1172,7 @@ Key_GetBinding
 */
 char *Key_GetBinding( int keynum ) {
 	if ( keynum == -1 ) {
-		return "";
+        return (char*)"";
 	}
 
 	assert (keynum < (sizeof(kg.keys)/sizeof(kg.keys[0])));

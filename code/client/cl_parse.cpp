@@ -251,7 +251,7 @@ void CL_ParseSnapshot( msg_t *msg ) {
 	MSG_ReadData( msg, &newSnap.areamask, len);
 
 	// read playerinfo
-	SHOWNET( msg, "playerstate" );
+    SHOWNET( msg, (char*)"playerstate" );
 	if ( old ) {
 		MSG_ReadDeltaPlayerstate( msg, &old->ps, &newSnap.ps );
 	} else {
@@ -259,7 +259,7 @@ void CL_ParseSnapshot( msg_t *msg ) {
 	}
 
 	// read packet entities
-	SHOWNET( msg, "packet entities" );
+    SHOWNET( msg, (char*)"packet entities" );
 	CL_ParsePacketEntities( msg, old, &newSnap );
 
 	// if not valid, dump the entire thing now that it has
@@ -358,7 +358,7 @@ void CL_ParseGamestate( msg_t *msg ) {
 
 	Con_Close();
 
-	UI_UpdateConnectionString( "" );
+    UI_UpdateConnectionString( (char*)"" );
 
 	// wipe local client state
 	CL_ClearState();
@@ -493,7 +493,7 @@ void CL_ParseServerMessage( msg_t *msg ) {
 		cmd = MSG_ReadByte( msg );
 
 		if ( cmd == -1 ) {
-			SHOWNET( msg, "END OF MESSAGE" );
+            SHOWNET( msg, (char*)"END OF MESSAGE" );
 			break;
 		}
 
